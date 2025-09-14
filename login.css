@@ -21,7 +21,7 @@ body {
 }
 
 p {
-    margin: 40px;
+    margin: 30px;
     align-items: center;
 }
 
@@ -44,7 +44,9 @@ input {
     background-color: #29232e;
     color: rgb(112,85,73);
 }
-
+input,button:hover{
+    cursor:pointer;
+}
 #desc {
     display: flex;
     flex-direction: column;
