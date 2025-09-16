@@ -1,8 +1,7 @@
 * {
     margin: 0px;
 }
-
-body {
+.page1{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -78,4 +77,38 @@ input,button:hover{
 h1{
     text-transform: capitalize;
     font-size: 50px;
+}
+form{
+    margin-top:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:350px
+}
+@media(max-width:700px){
+    .page1{
+        flex-direction: column-reverse;
+    }
+    #container,#desc{
+        position: static;
+        width:100%;
+        font-size: 0.7rem;
+    }
+    #desc p{
+        font-size: 0.7rem;
+    }
+    #desc h1{
+        font-size: 2.5rem;
+    }
+    #container{
+        background: linear-gradient(to bottom, #191922, #0f0e12);
+        align-items: center;
+    }
+    #desc {
+        background: linear-gradient(to bottom, #29232e, #191922);
+    }
+    #title{
+        font-size: 2rem;
+    }
 }
