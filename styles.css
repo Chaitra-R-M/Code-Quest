@@ -1,0 +1,115 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather:wght@700&family=Roboto&display=swap');
+
+/* General styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #D8CEC3;
+    color: #323232;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header styling */
+header h1 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2em;
+    margin-top: 0;
+}
+
+/* Language cards layout */
+.languages {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.language-card {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 150px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.language-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Progress tracking section styling */
+.progress-section {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.dropbtn {
+    background-color: #323232;
+    color: #D8CEC3;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dropbtn:hover {
+    background-color: #4A4A4A;
+}
+
+/* Dropdown list styling */
+.dropdown-content {
+    display: none;
+    background-color: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.dropdown-content p {
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+.dropdown-content p:hover {
+    background-color: #f0f0f0;
+}
+
+/* Stats area styling */
+.stats {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Footer styling */
+footer {
+    background-color: #323232;
+    color: #D8CEC3;
+    padding: 15px 0;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
