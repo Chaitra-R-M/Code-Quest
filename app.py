@@ -41,8 +41,12 @@ def login():
         return jsonify({'message':'Invalid Details!!'}),401
     return jsonify({'message':'Login successful!!'}),200
 
+@app.route('/')
+def index():
+    return send_from_directory('public', 'login.html')
+
 @app.route('/<path:path>')
 def serve_static(path):
     return send_from_directory('public',path)
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=5050)
