@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel = "stylesheet" href = "login.css">
+</head>
+<body>
+    <div class="page1">
+      <div id = "container">
+        <p id = "title">login</p>
+        <form id ="login-form">
+          <input type = "text" placeholder="Username" id="log-username" required>
+          <input type = "password" placeholder="Password" id ="log-password" required>
+          <button type = "submit">Submit</button>
+        </form>
+        <p style="color:rgb(112,85,73);margin-bottom: 5px;">New to CodeQuest? Register now</p>
+        <form id="register-form">
+          <input type = "text" placeholder="Username" id="reg-username" required>
+          <input type = "password" placeholder="Password" id ="reg-password" required>
+          <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <div id = "desc">
+        <h1 id ="lines"> code quest</h1>
+        <h2 id = "lines">
+            A learning platform for beginners to learn how to code in the most efficient and simplistic way
+        </h2>
+
+    </div>
+    </div>
+    
+    <script>
+  document.getElementById("login-form").addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    const username=document.getElementById("log-username").value;
+    const password=document.getElementById("log-password").value;
+
+    const response=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password}),});
+    const res=await response.json();
+    alert(res.message);
+  });
+  document.getElementById("register-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("reg-username").value;
+      const password = document.getElementById("reg-password").value;
+
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const res = await response.json();
+      alert(res.message);
+    });
+</script>
+</body>
+</html>

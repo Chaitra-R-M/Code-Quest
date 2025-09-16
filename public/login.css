@@ -1,0 +1,114 @@
+* {
+    margin: 0px;
+}
+.page1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+#container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    right: 0px;
+    background: linear-gradient(to right,  #191922, #0f0e12);
+    height: 100%;
+    width: 50%;
+}
+
+p {
+    margin: 30px;
+    align-items: center;
+}
+
+button{
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: 20px;
+    background-color: rgb(112,85,73);
+    border: none;
+    height: 40px;
+    width: 80%;
+}
+input {
+    padding-left: 20px;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 20px;
+    height: 40px;
+    border: none;
+    width: 80%;
+    background-color: #29232e;
+    color: rgb(112,85,73);
+}
+input,button:hover{
+    cursor:pointer;
+}
+#desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #29232e, #191922);
+    width: 50%;
+    height: 100%;
+}
+#lines {
+    font-family:'Courier New', Courier, monospace;
+    color: rgb(112,85,73);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 150px;
+    width: 60%;
+}
+
+#title {
+    color: rgb(112,85,73);
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 100px;
+}
+h1{
+    text-transform: capitalize;
+    font-size: 50px;
+}
+form{
+    margin-top:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:350px
+}
+@media(max-width:700px){
+    .page1{
+        flex-direction: column-reverse;
+    }
+    #container,#desc{
+        position: static;
+        width:100%;
+        font-size: 0.7rem;
+    }
+    #desc p{
+        font-size: 0.7rem;
+    }
+    #desc h1{
+        font-size: 2.5rem;
+    }
+    #container{
+        background: linear-gradient(to bottom, #191922, #0f0e12);
+        align-items: center;
+    }
+    #desc {
+        background: linear-gradient(to bottom, #29232e, #191922);
+    }
+    #title{
+        font-size: 2rem;
+    }
+}
