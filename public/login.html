@@ -33,29 +33,28 @@
     </div>
     
     <script>
-  document.getElementById("login-form").addEventListener("submit", async (e)=>{
-    e.preventDefault();
-    const username=document.getElementById("log-username").value;
-    const password=document.getElementById("log-password").value;
+      document.getElementById("login-form").addEventListener("submit", async (e)=>{
+        e.preventDefault();
+        const username=document.getElementById("log-username").value;
+        const password=document.getElementById("log-password").value;
 
-    const response=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password}),});
-    const res=await response.json();
-    alert(res.message);
-  });
-  document.getElementById("register-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const username = document.getElementById("reg-username").value;
-      const password = document.getElementById("reg-password").value;
-
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        const response=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password}),});
+        const res=await response.json();
+        alert(res.message);
       });
+      document.getElementById("register-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const username = document.getElementById("reg-username").value;
+        const password = document.getElementById("reg-password").value;
 
-      const res = await response.json();
-      alert(res.message);
-    });
+        const response = await fetch("/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+        const res = await response.json();
+        alert(res.message);
+      });
 </script>
 </body>
 </html>
