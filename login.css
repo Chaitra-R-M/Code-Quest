@@ -2,6 +2,11 @@
     margin: 0px;
 }
 
+/* Add this at the top of your CSS */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -15,13 +20,14 @@ body {
     flex-direction: column;
     justify-content: center;
     right: 0px;
-    background: linear-gradient(to right,  #191922, #0f0e12);
+    background: linear-gradient(to right,  #16161e, #0f0e12);
     height: 100%;
     width: 50%;
 }
 
 p {
-    margin: 40px;
+    margin: 30px;
+    margin-left: 80px;
     align-items: center;
 }
 
@@ -32,7 +38,8 @@ button{
     background-color: rgb(112,85,73);
     border: none;
     height: 40px;
-    width: 80%;
+    width: 60%;
+    padding-left: 20px;
 }
 input {
     padding-left: 20px;
@@ -40,7 +47,7 @@ input {
     font-size: 20px;
     height: 40px;
     border: none;
-    width: 80%;
+    width: 60%;
     background-color: #29232e;
     color: rgb(112,85,73);
 }
@@ -69,9 +76,9 @@ input {
 #title {
     color: rgb(112,85,73);
     font-family:'Courier New', Courier, monospace;
-    font-weight: 600;
+    font-weight: 900;
     text-transform: capitalize;
-    font-size: 100px;
+    font-size: 80px;
 }
 h1{
     text-transform: capitalize;
