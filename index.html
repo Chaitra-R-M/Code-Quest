@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CodeQuest</title>
+
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <!-- Header section -->
+    <header>
+        <div id = "bar">
+            <a href="#">Login</a>
+            <a href="#">Sign Up</a>
+        </div>
+        <div id = "logo">
+        <h1>CodeQuest</h1>
+        <p>Your journey to coding mastery!</p>
+        </div>
+    </header>
+
+    <!-- Language cards and progress report side by side -->
+    <div class="main-content">
+        <div class="languages">
+            <button class="language-card" data-lang="Python">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" width="80">
+                <p>Python</p>
+            </button>
+            <button class="language-card" data-lang="C++">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="C++" width="80">
+                <p>C++</p>
+            </button>
+            <button class="language-card" data-lang="Java">
+                <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java" width="80">
+                <p>Java</p>
+            </button>
+        </div>
+
+        <!-- Progress report section (initially hidden) -->
+        <div id="statsContainer" class="stats hidden">
+            <h3 id="langTitle">Language</h3>
+            <p>Videos Completed: <span id="videosCount">0</span></p>
+            <p>Questions Written: <span id="questionsCount">0</span></p>
+            <p>Points Earned: <span id="pointsCount">0</span></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 CodeQuest - Learn, Practice, and Grow!
+    </footer>
+
+    <!-- JavaScript code for hover progress report -->
+    <script>
+        // Get elements
+        const languageCards = document.querySelectorAll('.language-card');
+        const stats = document.getElementById('statsContainer');
+        const languageTitle = document.getElementById('langTitle');
+        const videosCount = document.getElementById('videosCount');
+        const questionsCount = document.getElementById('questionsCount');
+        const pointsCount = document.getElementById('pointsCount');
+
+        // Example data
+        const progressData = {
+            "Java": { videos: 12, questions: 30, points: 150 },
+            "C++": { videos: 8, questions: 22, points: 100 },
+            "Python": { videos: 15, questions: 40, points: 200 }
+        };
+
+        // Show stats on hover
+        languageCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const selectedLanguage = card.getAttribute('data-lang');
+                const data = progressData[selectedLanguage];
+                languageTitle.textContent = selectedLanguage;
+                videosCount.textContent = data.videos;
+                questionsCount.textContent = data.questions;
+                pointsCount.textContent = data.points;
+                stats.classList.remove('hidden');
+            });
+            card.addEventListener('mouseleave', () => {
+                stats.classList.add('hidden');
+            });
+        });
+
+        // Also hide stats if mouse leaves the stats area itself
+        stats.addEventListener('mouseleave', () => {
+            stats.classList.add('hidden');
+        });
+    </script>
+
+</body>
+</html>

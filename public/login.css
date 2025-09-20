@@ -1,6 +1,7 @@
 * {
     margin: 0px;
 }
+<<<<<<< HEAD:login.css
 
 /* Add this at the top of your CSS */
 *, *::before, *::after {
@@ -8,6 +9,9 @@
 }
 
 body {
+=======
+.page1{
+>>>>>>> 929b2a4e5522d156e2c89917793567ee0e393e6f:public/login.css
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +31,10 @@ body {
 
 p {
     margin: 30px;
+<<<<<<< HEAD:login.css
     margin-left: 80px;
+=======
+>>>>>>> 929b2a4e5522d156e2c89917793567ee0e393e6f:public/login.css
     align-items: center;
     transition:transform 0.2s;
 }
@@ -67,7 +74,9 @@ input {
     background-color: #29232e;
     color: rgb(112,85,73);
 }
-
+input,button:hover{
+    cursor:pointer;
+}
 #desc {
     display: flex;
     flex-direction: column;
@@ -99,4 +108,38 @@ input {
 h1{
     text-transform: capitalize;
     font-size: 50px;
+}
+form{
+    margin-top:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:350px
+}
+@media(max-width:700px){
+    .page1{
+        flex-direction: column-reverse;
+    }
+    #container,#desc{
+        position: static;
+        width:100%;
+        font-size: 0.7rem;
+    }
+    #desc p{
+        font-size: 0.7rem;
+    }
+    #desc h1{
+        font-size: 2.5rem;
+    }
+    #container{
+        background: linear-gradient(to bottom, #191922, #0f0e12);
+        align-items: center;
+    }
+    #desc {
+        background: linear-gradient(to bottom, #29232e, #191922);
+    }
+    #title{
+        font-size: 2rem;
+    }
 }
