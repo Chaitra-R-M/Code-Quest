@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel = "stylesheet" href = "login.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='login.css')}}" />
 </head>
 <body>
     <div class="page1">
@@ -38,9 +38,21 @@
         const username=document.getElementById("log-username").value;
         const password=document.getElementById("log-password").value;
 
-        const response=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password}),});
-        const res=await response.json();
-        alert(res.message);
+        const response=await fetch("/api/login",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({username,password}),
+        });
+        const restext=await response.json();
+        try{
+          alert(restext.message);
+          if(response.ok && restext.message === "Login Successful"){
+            window.location.href="/home";
+          }
+        }catch(err){
+          console.error("Unexpected response:",restext);
+          alert("Login failed or server error");
+        }
       });
       document.getElementById("register-form").addEventListener("submit", async (e) => {
         e.preventDefault();

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather:wght@700&family=Roboto&display=swap" rel="stylesheet">
 
     <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}" />
 </head>
 <body>
 
@@ -122,6 +122,7 @@
                 dropdownMenu.style.display = 'none';
             }
         });
+        
     </script>
 
 </body>

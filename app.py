@@ -1,10 +1,10 @@
-from flask import Flask,request,jsonify,send_from_directory
+from flask import Flask,request,jsonify,send_from_directory,render_template,redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
 load_dotenv()
 
-app=Flask(__name__)
+app=Flask(__name__,template_folder='public',static_folder='static')
 app.config['SQLALCHEMY_DATABASE_URI']=os.getenv('DB_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
@@ -16,6 +16,14 @@ class User(db.Model):
 
 with app.app_context():
     db.create_all()
+
+@app.route('/')
+def home():
+    return render_template('login.html')
+
+@app.route('/home')
+def index():
+    return render_template('index.html')
 
 @app.route('/api/register',methods=['POST'])
 def register():
@@ -33,20 +41,14 @@ def register():
 
 @app.route('/api/login',methods=['POST'])
 def login():
-    data=request.get_json()
-    username=data.get('username')
-    password=data.get('password')
-    user=User.query.filter_by(username=username,password=password).first()
-    if not user:
-        return jsonify({'message':'Invalid Details!!'}),401
-    return jsonify({'message':'Login successful!!'}),200
+    if request.method=='POST':
+        data=request.get_json()
+        username=data.get('username')
+        password=data.get('password')
+        user=User.query.filter_by(username=username,password=password).first()
+        if not user:
+            return jsonify({'message':'Invalid Details!!'}),401
+        return jsonify({'message':'Login Successful'}),200
 
-@app.route('/')
-def index():
-    return send_from_directory('public', 'login.html')
-
-@app.route('/<path:path>')
-def serve_static(path):
-    return send_from_directory('public',path)
 if __name__=='__main__':
     app.run(debug=True,port=5050)
