@@ -5,56 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>CodeQuest</title>
 
-    <!-- Import Google Fonts -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather:wght@700&family=Roboto&display=swap" rel="stylesheet">
 
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #0f0e12;
+            color: #f5f5f5;
+        }
+
+        header {
+            background: #191922;
+            color: white;
+            padding: 20px;
+        }
+
+        .languages {
+            margin: 20px 0;
+        }
+
+        .language-card img {
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .language-card img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        /* Dropdown */
+        .dropbtn {
+            background: #29232e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s;
+            margin-bottom: 10px;
+        }
+        .dropbtn:hover {
+            background: #3a3544;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #29232e;
+            border: 1px solid #444;
+            min-width: 160px;
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .dropdown-content p {
+            padding: 10px;
+            margin: 0;
+            cursor: pointer;
+            color: #f5f5f5;
+        }
+        .dropdown-content p:hover {
+            background: #3a3544;
+        }
+        .dropdown-content.show {
+            display: block;
+        }
+
+        /* Stats */
+        .stats {
+            margin: 20px auto;
+            max-width: 400px;
+            text-align: left;
+            background: #16161e;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .stats h3 {
+            margin-top: 0;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            width: 100%;
+            background: #29232e;
+            border-radius: 10px;
+            margin: 5px 0 15px;
+            height: 20px;
+            overflow: hidden;
+        }
+        .fill {
+            height: 100%;
+            width: 0%;
+            background: #4caf50;
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 10px;
+            background: #191922;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header section -->
+    <!-- Header -->
     <header>
         <h1>CodeQuest</h1>
         <p>Your journey to coding mastery!</p>
     </header>
 
-    <!-- Language cards (just for decoration) -->
+    <!-- Python card -->
     <div class="languages">
         <div class="language-card" data-lang="Python">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" width="80">
+            <img id="pythonLogo" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" 
+                 alt="Python" width="100">
             <p>Python</p>
-        </div>
-        <div class="language-card" data-lang="C++">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="C++" width="80">
-            <p>C++</p>
-        </div>
-        <div class="language-card" data-lang="Java">
-            <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java" width="80">
-            <p>Java</p>
         </div>
     </div>
 
-    <!-- Progress tracking section -->
+    <!-- Progress tracking -->
     <div class="progress-section">
         <h2>Track Your Progress</h2>
 
-        <!-- Dropdown button -->
-        <button class="dropbtn" id="selectedLanguage">Select a language ▼</button>
-
-        <!-- Dropdown list -->
+        <!-- Dropdown -->
+        <button class="dropbtn" id="selectedLanguage">Python ▼</button>
         <div class="dropdown-content" id="dropdownContent">
-            <p data-lang="Java">Java</p>
-            <p data-lang="C++">C++</p>
             <p data-lang="Python">Python</p>
         </div>
 
-        <!-- Area where stats will be shown -->
-        <div id="statsContainer" class="stats hidden">
-            <h3 id="langTitle">Language</h3>
+        <!-- Stats -->
+        <div id="statsContainer" class="stats">
+            <h3 id="langTitle">Python</h3>
+
             <p>Videos Completed: <span id="videosCount">0</span></p>
+            <div class="progress-bar"><div id="videosBar" class="fill"></div></div>
+
             <p>Questions Written: <span id="questionsCount">0</span></p>
+            <div class="progress-bar"><div id="questionsBar" class="fill"></div></div>
+
             <p>Points Earned: <span id="pointsCount">0</span></p>
+            <div class="progress-bar"><div id="pointsBar" class="fill"></div></div>
         </div>
     </div>
 
@@ -63,66 +162,50 @@
         © 2025 CodeQuest - Learn, Practice, and Grow!
     </footer>
 
-    <!-- JavaScript code to make dropdown work -->
     <script>
-        // Step 1: Get the important elements from the page
-        const dropButton = document.getElementById('selectedLanguage');  // The button to select language
-        const dropdownMenu = document.getElementById('dropdownContent'); // The list of languages
-        const options = dropdownMenu.querySelectorAll('p');              // All language options
-        const stats = document.getElementById('statsContainer');         // The stats area
-        const languageTitle = document.getElementById('langTitle');      // The title showing the selected language
-        const videosCount = document.getElementById('videosCount');      // Where video count is shown
-        const questionsCount = document.getElementById('questionsCount');// Where question count is shown
-        const pointsCount = document.getElementById('pointsCount');      // Where points count is shown
+        const pythonLogo = document.getElementById('pythonLogo');  
+        const videosCount = document.getElementById('videosCount');  
+        const questionsCount = document.getElementById('questionsCount');  
+        const pointsCount = document.getElementById('pointsCount');  
 
-        // Step 2: Create some example data for each language
-        const progressData = {
-            "Java": { videos: 12, questions: 30, points: 150 },
-            "C++": { videos: 8, questions: 22, points: 100 },
-            "Python": { videos: 15, questions: 40, points: 200 }
-        };
+        const videosBar = document.getElementById('videosBar');
+        const questionsBar = document.getElementById('questionsBar');
+        const pointsBar = document.getElementById('pointsBar');
 
-        // Step 3: Show or hide the dropdown when the button is clicked
+        // Progress max values
+        const MAX = { videos: 20, questions: 50, points: 250 };
+
+        // Progress data
+        let pythonProgress = { videos: 0, questions: 0, points: 0 };
+
+        // Click image → update stats and progress bars
+        pythonLogo.addEventListener('click', () => {
+            pythonProgress.videos += 1;
+            pythonProgress.questions += 2;
+            pythonProgress.points += 10;
+
+            videosCount.textContent = pythonProgress.videos;
+            questionsCount.textContent = pythonProgress.questions;
+            pointsCount.textContent = pythonProgress.points;
+
+            videosBar.style.width = Math.min((pythonProgress.videos / MAX.videos) * 100, 100) + "%";
+            questionsBar.style.width = Math.min((pythonProgress.questions / MAX.questions) * 100, 100) + "%";
+            pointsBar.style.width = Math.min((pythonProgress.points / MAX.points) * 100, 100) + "%";
+        });
+
+        // Dropdown logic
+        const dropButton = document.getElementById('selectedLanguage');  
+        const dropdownMenu = document.getElementById('dropdownContent');  
+
         dropButton.addEventListener('click', () => {
-            if (dropdownMenu.style.display === 'block') {
-                dropdownMenu.style.display = 'none';
-            } else {
-                dropdownMenu.style.display = 'block';
-            }
+            dropdownMenu.classList.toggle('show');
         });
 
-        // Step 4: Handle clicks on each language option
-        options.forEach(option => {
-            option.addEventListener('click', () => {
-                const selectedLanguage = option.getAttribute('data-lang'); // Get which language was clicked
-                
-                // Update the button text
-                dropButton.textContent = selectedLanguage + " ▼";
-
-                // Hide the dropdown
-                dropdownMenu.style.display = 'none';
-
-                // Get the data for the selected language
-                const data = progressData[selectedLanguage];
-
-                // Update the stats section with real data
-                languageTitle.textContent = selectedLanguage;
-                videosCount.textContent = data.videos;
-                questionsCount.textContent = data.questions;
-                pointsCount.textContent = data.points;
-
-                // Make sure stats area is visible
-                stats.classList.remove('hidden');
-            });
-        });
-
-        // Step 5: If user clicks outside the dropdown, close it
         window.addEventListener('click', (event) => {
             if (!dropButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownMenu.style.display = 'none';
+                dropdownMenu.classList.remove('show');
             }
         });
-        
     </script>
 
 </body>
