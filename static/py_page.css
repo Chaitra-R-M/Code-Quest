@@ -1,4 +1,6 @@
-
+html{
+    scroll-behavior: smooth;
+}
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +17,7 @@
     align-items: center;
     height: 100vh;
     width: 200px;
-    background-color: blue
+    background-color: #13131f;
 }
 
 button {
