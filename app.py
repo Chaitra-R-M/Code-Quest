@@ -26,7 +26,15 @@ with app.app_context():
 
 @app.route('/')
 def home():
+    return render_template('login.html')
+
+@app.route('/home')
+def index():
     return render_template('index.html')
+
+@app.route('/python')
+def pythonpage():
+    return render_template('py_page.html')
 
 @app.route('/api/register',methods=['POST'])
 def register():
@@ -56,7 +64,7 @@ def login():
 def addLanguage():
     data = request.get_json()
     language=data.get('language')
-    if language ="Python":
+    if language =="Python":
         return jsonify({'message':'Enjoy learning Python'})
     
 

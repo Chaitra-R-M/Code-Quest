@@ -65,7 +65,15 @@
           body: JSON.stringify({ username, password }),
         });
         const res = await response.json();
-        alert(res.message);
+        try{
+          alert(res.message);
+          if(response.ok && res.message=="Registration complete!!"){
+            window.location.href="/home"
+          }
+        }catch{
+          console.error("Unexpected response:",res);
+          alert("Registration failed or server error");
+        }
       });
 </script>
 </body>

@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Learning</title>
-    <link rel = "stylesheet" href = "py_page.css">
+    <link rel = "stylesheet" href = "{{url_for('static',filename='py_page.css')}}">
     
 </head>
 
 <body>
     <div id = "chapters">
-        <button> Print</button>
-        <button> Variables</button>
-        <button> Input</button>
-        <button> If- Else</button>
-        <button> Loops</button>
+        <button onclick="location.href='#print'"> Print</button>
+        <button onclick="location.href='#variables'"> Variables</button>
+        <button onclick="location.href='#input'"> Input</button>
+        <button onclick="location.href='#ifelse'"> If- Else</button>
+        <button onclick="location.href='#loops'"> Loops</button>
     </div>
 
     <div id = "content">
@@ -44,7 +44,7 @@
             Overall, Python's simplicity, versatility, and extensive libraries make it a popular choice for both beginners and experienced developers across various domains.</p>
             
             <br><hr><br>
-                    <h2>Print</h2>
+                    <h2 id="print">Print</h2>
             <br><hr><br>
             <p>
             The <strong>print()</strong> function in Python is like telling the computer to say something out loud. When you use <code>print()</code>, the computer will show your message on the screen. It's a way to talk to your computer and see what it's thinking!
@@ -60,7 +60,7 @@
             </p>
 
             <br><hr><br>
-            <h2>Variables</h2>
+            <h2 id="variables">Variables</h2>
             <br><hr><br>
             <p>
             A <strong>variable</strong> is like a box where you can store things you want to use later. You can put numbers, words, or even lists of things in your box. You give each box a name so you can find it again. In Python, you don't have to say what kind of thing you're putting in the box—the computer figures it out!
@@ -92,7 +92,7 @@
             </ul>
 
             <br><hr><br>
-            <h2>Input</h2>
+            <h2 id="input">Input</h2>
             <br><hr><br>
             <p>
             The <strong>input()</strong> function lets you ask the person using your program a question. The computer will wait for them to type an answer and press Enter. Whatever they type gets saved so you can use it in your program!
@@ -111,7 +111,7 @@
             </p>
 
             <br><hr><br>
-            <h2>If-Else</h2>
+            <h2 id="ifelse">If-Else</h2>
             <br><hr><br>
             <p>
             An <strong>if-else</strong> statement is like asking the computer a yes-or-no question. If the answer is yes (True), the computer does one thing. If the answer is no (False), it does something else. This helps your program make decisions!
@@ -132,7 +132,7 @@
             </p>
 
             <br><hr><br>
-            <h2>Loops</h2>
+            <h2 id="loops">Loops</h2>
             <br><hr><br>
             <p>
             A <strong>loop</strong> is like telling the computer to do something again and again. There are two main kinds: <strong>for</strong> loops and <strong>while</strong> loops. A <code>for</code> loop is good when you know how many times you want to repeat something. A <code>while</code> loop keeps going as long as something is true.
