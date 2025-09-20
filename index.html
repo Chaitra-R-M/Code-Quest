@@ -5,49 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>CodeQuest</title>
 
-    <!-- Import Google Fonts -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather:wght@700&family=Roboto&display=swap" rel="stylesheet">
 
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #0f0e12;
+            color: #f5f5f5;
+        }
+
+        header {
+            background: #191922;
+            color: white;
+            padding: 20px;
+        }
+
+        .languages {
+            margin: 20px 0;
+        }
+
+        .language-card img {
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .language-card img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        /* Dropdown */
+        .dropbtn {
+            background: #29232e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s;
+            margin-bottom: 10px;
+        }
+        .dropbtn:hover {
+            background: #3a3544;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #29232e;
+            border: 1px solid #444;
+            min-width: 160px;
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .dropdown-content p {
+            padding: 10px;
+            margin: 0;
+            cursor: pointer;
+            color: #f5f5f5;
+        }
+        .dropdown-content p:hover {
+            background: #3a3544;
+        }
+        .dropdown-content.show {
+            display: block;
+        }
+
+        /* Stats */
+        .stats {
+            margin: 20px auto;
+            max-width: 400px;
+            text-align: left;
+            background: #16161e;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .stats h3 {
+            margin-top: 0;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            width: 100%;
+            background: #29232e;
+            border-radius: 10px;
+            margin: 5px 0 15px;
+            height: 20px;
+            overflow: hidden;
+        }
+        .fill {
+            height: 100%;
+            width: 0%;
+            background: #4caf50;
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 10px;
+            background: #191922;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header section -->
+    <!-- Header -->
     <header>
-        <div id = "bar">
-            <a href="#">Login</a>
-            <a href="#">Sign Up</a>
-        </div>
-        <div id = "logo">
         <h1>CodeQuest</h1>
         <p>Your journey to coding mastery!</p>
-        </div>
     </header>
 
-    <!-- Language cards and progress report side by side -->
-    <div class="main-content">
-        <div class="languages">
-            <button class="language-card" data-lang="Python">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" width="80">
-                <p>Python</p>
-            </button>
-            <button class="language-card" data-lang="C++">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="C++" width="80">
-                <p>C++</p>
-            </button>
-            <button class="language-card" data-lang="Java">
-                <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java" width="80">
-                <p>Java</p>
-            </button>
+    <!-- Python card -->
+    <div class="languages">
+        <div class="language-card" data-lang="Python">
+            <img id="pythonLogo" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" 
+                 alt="Python" width="100">
+            <p>Python</p>
+        </div>
+    </div>
+
+    <!-- Progress tracking -->
+    <div class="progress-section">
+        <h2>Track Your Progress</h2>
+
+        <!-- Dropdown -->
+        <button class="dropbtn" id="selectedLanguage">Python ▼</button>
+        <div class="dropdown-content" id="dropdownContent">
+            <p data-lang="Python">Python</p>
         </div>
 
-        <!-- Progress report section (initially hidden) -->
-        <div id="statsContainer" class="stats hidden">
-            <h3 id="langTitle">Language</h3>
+        <!-- Stats -->
+        <div id="statsContainer" class="stats">
+            <h3 id="langTitle">Python</h3>
+
             <p>Videos Completed: <span id="videosCount">0</span></p>
+            <div class="progress-bar"><div id="videosBar" class="fill"></div></div>
+
             <p>Questions Written: <span id="questionsCount">0</span></p>
+            <div class="progress-bar"><div id="questionsBar" class="fill"></div></div>
+
             <p>Points Earned: <span id="pointsCount">0</span></p>
+            <div class="progress-bar"><div id="pointsBar" class="fill"></div></div>
         </div>
     </div>
 
@@ -56,42 +162,49 @@
         © 2025 CodeQuest - Learn, Practice, and Grow!
     </footer>
 
-    <!-- JavaScript code for hover progress report -->
     <script>
-        // Get elements
-        const languageCards = document.querySelectorAll('.language-card');
-        const stats = document.getElementById('statsContainer');
-        const languageTitle = document.getElementById('langTitle');
-        const videosCount = document.getElementById('videosCount');
-        const questionsCount = document.getElementById('questionsCount');
-        const pointsCount = document.getElementById('pointsCount');
+        const pythonLogo = document.getElementById('pythonLogo');  
+        const videosCount = document.getElementById('videosCount');  
+        const questionsCount = document.getElementById('questionsCount');  
+        const pointsCount = document.getElementById('pointsCount');  
 
-        // Example data
-        const progressData = {
-            "Java": { videos: 12, questions: 30, points: 150 },
-            "C++": { videos: 8, questions: 22, points: 100 },
-            "Python": { videos: 15, questions: 40, points: 200 }
-        };
+        const videosBar = document.getElementById('videosBar');
+        const questionsBar = document.getElementById('questionsBar');
+        const pointsBar = document.getElementById('pointsBar');
 
-        // Show stats on hover
-        languageCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                const selectedLanguage = card.getAttribute('data-lang');
-                const data = progressData[selectedLanguage];
-                languageTitle.textContent = selectedLanguage;
-                videosCount.textContent = data.videos;
-                questionsCount.textContent = data.questions;
-                pointsCount.textContent = data.points;
-                stats.classList.remove('hidden');
-            });
-            card.addEventListener('mouseleave', () => {
-                stats.classList.add('hidden');
-            });
+        // Progress max values
+        const MAX = { videos: 20, questions: 50, points: 250 };
+
+        // Progress data
+        let pythonProgress = { videos: 0, questions: 0, points: 0 };
+
+        // Click image → update stats and progress bars
+        pythonLogo.addEventListener('click', () => {
+            pythonProgress.videos += 1;
+            pythonProgress.questions += 2;
+            pythonProgress.points += 10;
+
+            videosCount.textContent = pythonProgress.videos;
+            questionsCount.textContent = pythonProgress.questions;
+            pointsCount.textContent = pythonProgress.points;
+
+            videosBar.style.width = Math.min((pythonProgress.videos / MAX.videos) * 100, 100) + "%";
+            questionsBar.style.width = Math.min((pythonProgress.questions / MAX.questions) * 100, 100) + "%";
+            pointsBar.style.width = Math.min((pythonProgress.points / MAX.points) * 100, 100) + "%";
         });
 
-        // Also hide stats if mouse leaves the stats area itself
-        stats.addEventListener('mouseleave', () => {
-            stats.classList.add('hidden');
+        // Dropdown logic
+        const dropButton = document.getElementById('selectedLanguage');  
+        const dropdownMenu = document.getElementById('dropdownContent');  
+
+        dropButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('show');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!dropButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.remove('show');
+            }
         });
     </script>
 
