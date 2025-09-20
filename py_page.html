@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning</title>
+    <link rel = "stylesheet" href = "py_page.css">
+    
+</head>
+
+<body>
+    <div id = "chapters">
+        <button> Print</button>
+        <button> Variables</button>
+        <button> Input</button>
+        <button> If- Else</button>
+        <button> Loops</button>
+    </div>
+
+    <div id = "content">
+        <h1> Python Learning </h1>
+
+        <br><hr><br>
+        <p> Python is a high-level, interpreted programming language known for its simplicity and readability. It was created by Guido van Rossum and first released in 1991. Python's design philosophy emphasizes code readability and a syntax that allows programmers to express concepts in fewer lines of code compared to other programming languages.
+            <br>
+            Here are some key features and aspects of Python:
+            <br><br>
+            1. Easy to Learn and Use: Python has a simple syntax that is easy to understand, making it an excellent choice for beginners.
+            <br>
+            2. Interpreted Language: Python code is executed line by line, which makes debugging easier and allows for rapid development.
+            <br>
+            3. Versatile: Python can be used for various applications, including web development, data analysis, artificial intelligence, scientific computing, automation, and more.
+            <br>
+            4. Extensive Libraries: Python has a vast standard library and a rich ecosystem of third-party libraries and frameworks that extend its capabilities.
+            <br>
+            5. Cross-Platform: Python is available on multiple platforms, including Windows, macOS, Linux, and more.
+            <br>
+            6. Object-Oriented: Python supports object-oriented programming (OOP) principles, allowing for the creation of reusable and modular code.
+            <br>
+            7. Community Support: Python has a large and active community that contributes to its development and provides support through forums, tutorials, and documentation.
+            <br>
+            8. Popular Frameworks: Python has several popular frameworks for web development (e.g., Django, Flask), data science (e.g., Pandas, NumPy), machine learning (e.g., TensorFlow, scikit-learn), and more.
+            <br><br>
+            Overall, Python's simplicity, versatility, and extensive libraries make it a popular choice for both beginners and experienced developers across various domains.</p>
+            
+            <br><hr><br>
+                    <h2>Print</h2>
+            <br><hr><br>
+            <p>
+            The <strong>print()</strong> function in Python is like telling the computer to say something out loud. When you use <code>print()</code>, the computer will show your message on the screen. It's a way to talk to your computer and see what it's thinking!
+            </p>
+            <div class="code-box">
+            <pre><code>
+            def hello_world():
+                print("Hello, world!")
+            </code></pre>
+            </div>
+            <p>
+            In this example, the computer will show the words "Hello, world!" on the screen.
+            </p>
+
+            <br><hr><br>
+            <h2>Variables</h2>
+            <br><hr><br>
+            <p>
+            A <strong>variable</strong> is like a box where you can store things you want to use later. You can put numbers, words, or even lists of things in your box. You give each box a name so you can find it again. In Python, you don't have to say what kind of thing you're putting in the box—the computer figures it out!
+            </p>
+            <div class="code-box">
+            <pre><code>
+            # Integer: stores whole numbers
+            age = 25
+
+            # Float: stores decimal numbers
+            height = 5.9
+
+            # String: stores text
+            name = "Alice"
+
+            # Boolean: stores True or False values
+            is_student = True
+
+            # List: stores multiple values in a single variable
+            scores = [90, 85, 88]
+            </code></pre>
+            </div>
+            <ul>
+                <li><strong>Integer</strong>: A whole number, like <code>25</code>.</li>
+                <li><strong>Float</strong>: A number with a decimal, like <code>5.9</code>.</li>
+                <li><strong>String</strong>: Words or text, like <code>"Alice"</code>.</li>
+                <li><strong>Boolean</strong>: True or False, like <code>True</code>.</li>
+                <li><strong>List</strong>: A group of things, like <code>[90, 85, 88]</code>.</li>
+            </ul>
+
+            <br><hr><br>
+            <h2>Input</h2>
+            <br><hr><br>
+            <p>
+            The <strong>input()</strong> function lets you ask the person using your program a question. The computer will wait for them to type an answer and press Enter. Whatever they type gets saved so you can use it in your program!
+            </p>
+            <div class="code-box">
+            <pre><code>
+            # Using input() to get user input
+            name = input("Enter your name: ")
+            age = input("Enter your age: ")
+
+            print("Hello, " + name + "! You are " + age + " years old.")
+            </code></pre>
+            </div>
+            <p>
+            Here, the computer asks for your name and age, then says hello using the information you gave!
+            </p>
+
+            <br><hr><br>
+            <h2>If-Else</h2>
+            <br><hr><br>
+            <p>
+            An <strong>if-else</strong> statement is like asking the computer a yes-or-no question. If the answer is yes (True), the computer does one thing. If the answer is no (False), it does something else. This helps your program make decisions!
+            </p>
+            <div class="code-box">
+            <pre><code>
+            # Example of if-else statement
+            age = int(input("Enter your age: "))
+
+            if age >= 18:
+                print("You are an adult.")
+            else:
+                print("You are a minor.")
+            </code></pre>
+            </div>
+            <p>
+            In this example, the computer checks if your age is 18 or more. If yes, it says you are an adult. If not, it says you are a minor.
+            </p>
+
+            <br><hr><br>
+            <h2>Loops</h2>
+            <br><hr><br>
+            <p>
+            A <strong>loop</strong> is like telling the computer to do something again and again. There are two main kinds: <strong>for</strong> loops and <strong>while</strong> loops. A <code>for</code> loop is good when you know how many times you want to repeat something. A <code>while</code> loop keeps going as long as something is true.
+            </p>
+            <div class="code-box">
+            <pre><code>
+            # For loop example: print numbers 1 to 5
+            for i in range(1, 6):
+                print(i)
+
+            # While loop example: print numbers 1 to 5
+            count = 1
+            while count <= 5:
+                print(count)
+                count += 1
+            </code></pre>
+            </div>
+            <p>
+            The first part prints the numbers 1 to 5 using a <code>for</code> loop. The second part does the same thing with a <code>while</code> loop. Both are ways to tell the computer, "Keep going until you reach 5!"
+            </p>
+
+</body>
+</html>
